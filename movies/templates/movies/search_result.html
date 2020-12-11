@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<body>
+{% if movies1 %}
+ <div class="Search_result" >
+    <br>
+    <h3> Search Result:</h3>
+         {% for data in movies1 %}
+        <div class="card" style='height: fit-content;width: 55%;border: #bdd0e2;border-style: groove;border-radius: 17px;'>
+            <div class="container">
+						<div class="form-row">
+                            <div class="name">Movie Name:</div>
+                            <div class="input-group">{{ data.name }}</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Director Name:</div>
+                            <div class="input-group">{{ data.director }}</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Genere:</div>
+                            {% for genere in data.genre.all %}{{ area }}
+                            <div class="input-group">{{ genere.title }},&nbsp</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-row">
+                            <div class="name">IMDB Rating:</div>
+                            <div class="input-group">{{ data.imdb_score }}</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Popularity_99:</div>
+                            <div class="input-group">{{ data.popularity_99 }}</div>
+                        </div>
+            </div>
+        </div>
+             </br>
+          {% endfor %}
+     <br>
+     {% else %}
+      <br>
+        <p>Movie Not Found.</p>
+    {% endif %}
+</body>
+</html>

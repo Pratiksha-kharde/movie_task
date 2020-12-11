@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="en-us" xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Movies </title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
+<link rel="stylesheet" type="text/css" href="{% static 'movies/css/index.css' %}">
+<meta name="robots" content="NONE,NOARCHIVE">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+function search(){
+    moviename = $('#searchmovie').val();
+    search_tech = $('#search_list').val();
+    console.log(moviename);
+    $.ajax({
+            url: "search/",
+            type: "POST",
+            data: {moviename, search_tech},
+            success: function(data){
+             $("#result").show();
+             $("#result").empty();
+             $("#result").html(data);
+            },
+            complete: function(){},
+            error: function(xhr, textStatus, thrownError) {
+                alert(thrownError);
+            }
+        });
+}
+</script>
+
+</head>
+
+<body class=" dashboard app-movies">
+{% include "movies/menu.html" %}
+
+ <div id="content31" >
+    {% if user.is_superuser %}
+    <button id="edit" type="button" style="background:#508fce;width: 95px;height: 35px;
+        border: none;border-radius: 5px;position: relative;left: 91%;">
+        <a href="{% url 'admin:index' %}">Edit Movies</a> {% endif %}
+    </button>
+
+    <div class="card" style="position: inherit;top: 14px;height: 45px;width: 553px;">
+    <input id="searchmovie" placeholder="Search Movies" onkeyup=""></input>
+
+        <select id="search_list" name="search_list" style="overflow: auto;height: 37px;border: #447e9b;
+    border-style: solid;width: 25%;">
+        <option value ='name' class="pp_name">Name</option>
+        <option value ='director' class="pp_name">Director</option>
+        <option value ='imdb_score' class="pp_name">IMDB Rating</option>
+        <option value ='genre' class="pp_name">Genre</option>
+        <option value ='popularity_99' class="pp_name">Popularity_99</option>
+        </select>
+
+        <button id="search" type="button" style="background:#508fce;width: 95px;height: 35px;color: white;
+        border: none;border-radius: 15px;" onclick="search();">Search</button>
+    </div>
+ <!--SEARCH RESULT-->
+ <div id="result" hidden>
+     <br>
+{% include "movies/search_result.html" %}
+ </div>
+    <br><br>
+    <h3>ALL Movies:</h3>
+     {% if movies %}
+     <div class="movies_data" >
+         {% for data in movies %}
+        <div class="card" style='height: fit-content;width: 55%;'>
+            <div class="container" >
+						<div class="form-row">
+                            <div class="name">Movie Name:</div>
+                            <div class="input-group">{{ data.name }}</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Director Name:</div>
+                            <div class="input-group">{{ data.director }}</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Genere:</div>
+                            {% for genere in data.genre.all %}{{ area }}
+                            <div class="input-group">{{ genere.title }},&nbsp</div>
+                            {% endfor %}
+                        </div>
+                        <div class="form-row">
+                            <div class="name">IMDB Rating:</div>
+                            <div class="input-group">{{ data.imdb_score }}</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Popularity_99:</div>
+                            <div class="input-group">{{ data.popularity_99 }}</div>
+                        </div>
+            </div>
+        </div>
+          {% endfor %}
+     <br>
+     {% else %}
+         <br>
+        <p> Movie Not Found!</p>
+    {% endif %}
+
+     <div class="card" style='height: fit-content;width: 55%;'>
+            <div class="container" >
+						<div class="form-row">
+                            <div class="name">Movie Name:</div>
+                            <div class="input-group">Pratiksha</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Director Name:</div>
+                            <div class="input-group">abc</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Genere:</div>
+                            <div class="input-group">abc</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">IMDB Rating:</div>
+                            <div class="input-group">10</div>
+                        </div>
+            </div>
+        </div>
+      <br>
+     <div class="card" style='height: fit-content;width: 55%;'>
+            <div class="container" >
+						<div class="form-row">
+                            <div class="name">Movie Name:</div>
+                            <div class="input-group">Pratiksha</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Director Name:</div>
+                            <div class="input-group">abc</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Genere:</div>
+                            <div class="input-group">abc</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">IMDB Rating:</div>
+                            <div class="input-group">10</div>
+                        </div>
+            </div>
+        </div>
+
+
+     </div>
+ </div>
+</body>
+</html>
+
