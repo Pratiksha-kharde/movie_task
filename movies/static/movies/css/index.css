@@ -1,0 +1,119 @@
+
+option:hover { color:#333; font-weight:bold; font-size:16px;}
+option { -webkit-border-radius:25px; -moz-border-radius:25px; border-radius:4px;}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.form-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 17px;
+  margin-top: 12px;
+}
+
+.form-row .name {
+  width: 125px;
+  color: #555;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+
+@media (max-width: 767px) {
+  .form-row {
+    display: block;
+  }
+.form-row .name,
+
+  .form-row .name {
+    margin-bottom: 7px;
+  }
+}
+
+.input-group {
+  position: relative;
+  margin: 0;
+  }
+  
+
+#searchmovie{
+    background: #d5e1e6;
+    border-color: #31708f;
+    border-style: double;
+    line-height: 30px;
+    border-radius: 4px;
+    width: 50%;
+    background-image: url(/static/movies/search.png);
+    background-position: 293px 8px;
+    background-repeat: no-repeat;
+}
+
+/*--keep--*/
+#content31 {
+    padding-left: 26px;
+    padding-right: 25px;
+    padding-top: 13px;
+    margin: 25px;
+    border: #417690;
+    border-style: solid;
+    /*flex-wrap: wrap;*/
+    /*x-justify-content: space-around;
+    /x-align-items: stretch;*/
+}
+.column.left {
+    width: 461%;
+    flex: 0 0 25%;
+}
+.column.right {
+    width: 20%;
+    flex: 1 0 30%;
+    flex-wrap:nowrap;
+    /* border-left: 1px solid #eee; */
+    /*position: relative;*/
+    padding-left: 4%;
+}
+.column.center {
+    /*border-left: 1px solid #eee;*/
+    width:50%;
+    flex: 0 0 40%;
+    flex-wrap:nowrap;
+}
+button a:link, a:visited {
+    color: #f1f4f7;
+}
